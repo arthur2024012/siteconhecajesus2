@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Início — Fé Cristã</title>
+  <meta name="description" content="Portal introdutório sobre a fé cristã. Recursos: Quem é Cristo, Citações do Senhor, Igrejas perto de mim.">
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #fff;
+      --accent: #0b5b9a;
+      --muted: #6b7280;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+      line-height: 1.6;
+      background: var(--bg);
+      color: #111;
+      margin: 0;
+    }
+    .container {
+      max-width: 980px;
+      margin: 32px auto;
+      padding: 20px;
+    }
+    header {
+      background: var(--card);
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+    nav {
+      margin-top: 12px;
+    }
+    nav a {
+      margin-right: 14px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    main {
+      margin-top: 20px;
+      background: var(--card);
+      padding: 22px;
+      border-radius: 12px;
+    }
+    footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .cta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,252,0.9));
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(15,23,42,0.04);
+    }
+    @media (max-width:560px){
+      h1{font-size:1.4rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fé Cristã — Portal de Introdução</h1>
+      <nav aria-label="Menu principal">
+        <a href="/index.html">Início</a>
+        <a href="/QueméCristo.html">Quem é Cristo</a>
+        <a href="/Citacoes.html">Citações do Senhor</a>
+        <a href="/Igrejas.html">Igrejas perto de mim</a>
+      </nav>
+    </header>
+
+    <main>
+      <p>Bem-vindo. Este portal foi elaborado para apresentar, com clareza e respeito, os princípios centrais da fé cristã. Aqui você encontrará explicações sobre a pessoa de Jesus Cristo, citações bíblicas fundamentais e ferramentas práticas para localizar comunidades de fé em sua região.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Quem é Cristo</h3>
+          <p class="muted">Uma introdução sobre a identidade e a missão de Jesus.</p>
+          <a class="cta" href="/QueméCristo.html">Ler mais</a>
+        </div>
+
+        <div class="card">
+          <h3>Citações do Senhor</h3>
+          <p class="muted">Seleção de textos e ensinamentos essenciais.</p>
+          <a class="cta" href="/Citacoes.html">Ler citações</a>
+        </div>
+
+        <div class="card">
+          <h3>Igrejas perto de mim</h3>
+          <p class="muted">Ferramenta para localizar igrejas e cultos próximos.</p>
+          <a class="cta" href="/Igrejas.html">Procurar igrejas</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Este site tem caráter informativo e pastoral. Para perguntas pessoais ou acompanhamento espiritual recomendamos procurar uma comunidade local.</p>
+      <p>&copy; <span id="ano"></span> Fé Cristã — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('ano').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
