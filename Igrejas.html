@@ -48,6 +48,7 @@
       border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
+      margin-top: 8px;
     }
     button:hover {
       opacity: 0.9;
@@ -77,7 +78,7 @@
     </header>
 
     <main>
-      <p>Encontrar uma comunidade cristã é um passo importante para fortalecer a fé e viver a mensagem de Cristo em comunhão. Utilize o mapa abaixo para localizar igrejas próximas a você.</p>
+      <p>Encontrar uma comunidade cristã é um passo importante para fortalecer a fé e viver a mensagem de Cristo em comunhão. Clique no botão abaixo e permita o acesso à sua localização para visualizar igrejas próximas.</p>
       
       <button onclick="abrirMapa()">Mostrar igrejas próximas</button>
 
@@ -103,14 +104,26 @@
             const mapa = document.getElementById("mapa");
             mapa.innerHTML = `
               <iframe
-                src="https://www.google.com/maps?q=igreja+cristã+perto+de+mim+em+São+Paulo&ll=${lat},${lon}&z=14&output=embed"
+                src="https://www.google.com/maps?q=igreja+cristã+perto+de+mim&ll=${lat},${lon}&z=14&output=embed"
                 allowfullscreen
                 loading="lazy">
               </iframe>
             `;
           },
-          () => {
-            alert("Não foi possível obter sua localização. Ative o GPS ou busque manualmente no Google Maps.");
+          (error) => {
+            switch (error.code) {
+              case error.PERMISSION_DENIED:
+                alert("Permita o acesso à localização para ver igrejas próximas.");
+                break;
+              case error.POSITION_UNAVAILABLE:
+                alert("Não foi possível determinar sua localização.");
+                break;
+              case error.TIMEOUT:
+                alert("Tempo limite ao buscar localização. Tente novamente.");
+                break;
+              default:
+                alert("Erro desconhecido ao tentar acessar a localização.");
+            }
           }
         );
       } else {
