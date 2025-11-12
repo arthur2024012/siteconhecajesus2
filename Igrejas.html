@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Igrejas perto de mim — Fé Cristã</title>
-  <meta name="description" content="Encontre igrejas e eventos cristãos próximos de você.">
+  <meta name="description" content="Encontre igrejas, eventos cristãos e horários de cultos próximos de você.">
   <style>
     :root {
       --bg: #f7f8fb;
@@ -86,11 +86,12 @@
     </header>
 
     <main>
-      <p>Busque igrejas cristãs e eventos de fé próximos de você. Permita o acesso à sua localização para resultados mais precisos.</p>
+      <p>Busque igrejas, eventos e horários de cultos cristãos próximos de você. Permita o acesso à sua localização para resultados precisos e locais.</p>
       
       <div class="botoes">
         <button onclick="abrirMapa()">Mostrar igrejas próximas</button>
         <button onclick="abrirEventos()">Eventos cristãos próximos</button>
+        <button onclick="abrirCultos()">Missas e cultos de hoje</button>
       </div>
 
       <div id="mapa"></div>
@@ -122,7 +123,7 @@
               </iframe>
             `;
           },
-          (error) => {
+          () => {
             alert("Ative o GPS para ver igrejas cristãs próximas da sua região.");
           }
         );
@@ -131,20 +132,39 @@
       }
     }
 
-    // Mostrar eventos cristãos (filtrando festas seculares)
+    // Mostrar eventos cristãos (sem festas seculares)
     function abrirEventos() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (pos) => {
             const lat = pos.coords.latitude;
             const lon = pos.coords.longitude;
-            // Filtra pra mostrar só eventos cristãos, excluindo DJ, festas, baladas etc.
-            const query = encodeURIComponent("eventos cristãos OR retiro espiritual OR culto OR vigília -DJ -balada -show -festival");
+            const query = encodeURIComponent("eventos cristãos OR retiro espiritual OR culto OR vigília -DJ -balada -show -festival -festa");
             const url = `https://www.google.com/maps/search/${query}/@${lat},${lon},14z`;
             window.open(url, "_blank");
           },
           () => {
             alert("Ative o GPS para encontrar eventos cristãos próximos.");
+          }
+        );
+      } else {
+        alert("Seu navegador não suporta geolocalização.");
+      }
+    }
+
+    // Mostrar missas e cultos do dia
+    function abrirCultos() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            const query = encodeURIComponent("missas de hoje OR cultos de hoje OR celebrações cristãs -DJ -balada -show -festival -festa");
+            const url = `https://www.google.com/maps/search/${query}/@${lat},${lon},14z`;
+            window.open(url, "_blank");
+          },
+          () => {
+            alert("Ative o GPS para ver os horários de missas e cultos próximos.");
           }
         );
       } else {
