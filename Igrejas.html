@@ -86,7 +86,7 @@
     </header>
 
     <main>
-      <p>Busque igrejas, eventos e horários de cultos cristãos próximos de você. Permita o acesso à sua localização para resultados precisos e locais.</p>
+      <p>Busque igrejas, eventos e horários de cultos cristãos próximos de você. Permita o acesso à sua localização para resultados mais precisos e locais.</p>
       
       <div class="botoes">
         <button onclick="abrirMapa()">Mostrar igrejas próximas</button>
@@ -117,7 +117,7 @@
             const mapa = document.getElementById("mapa");
             mapa.innerHTML = `
               <iframe
-                src="https://www.google.com/maps?q=igreja+evangélica+ou+católica+cristã+brasil&ll=${lat},${lon}&z=14&output=embed"
+                src="https://www.google.com/maps?q=igreja+evangélica+católica+cristã+brasil&ll=${lat},${lon}&z=14&output=embed"
                 allowfullscreen
                 loading="lazy">
               </iframe>
@@ -139,7 +139,7 @@
           (pos) => {
             const lat = pos.coords.latitude;
             const lon = pos.coords.longitude;
-            const query = encodeURIComponent("eventos cristãos OR retiro espiritual OR culto OR vigília -DJ -balada -show -festival -festa");
+            const query = encodeURIComponent("eventos cristãos retiro espiritual culto vigília -DJ -balada -show -festival -festa");
             const url = `https://www.google.com/maps/search/${query}/@${lat},${lon},14z`;
             window.open(url, "_blank");
           },
@@ -159,7 +159,7 @@
           (pos) => {
             const lat = pos.coords.latitude;
             const lon = pos.coords.longitude;
-            const query = encodeURIComponent("missas de hoje OR cultos de hoje OR celebrações cristãs -DJ -balada -show -festival -festa");
+            const query = encodeURIComponent("missas de hoje cultos de hoje celebrações cristãs -DJ -balada -show -festival -festa");
             const url = `https://www.google.com/maps/search/${query}/@${lat},${lon},14z`;
             window.open(url, "_blank");
           },
